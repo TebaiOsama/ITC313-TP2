@@ -30,7 +30,7 @@ void Magasin::ajoutProduit(std::string t_titre_produit, double t_prix_produit, i
 }
 
 void Magasin::affichageProduits(){
-	std::cout<<"Produits disponibles : "<<std::endl;
+	std::cout<<"Produits disponibles : "<<std::endl<<std::endl;
 	std::cout<<"Nom\t\tDescription\t\t\tQuantite"<<std::endl;
 	for(int i=0; i<m_produits.size(); i++){
 		std::cout<<m_produits[i]->getTitreProduit()
@@ -39,10 +39,11 @@ void Magasin::affichageProduits(){
 				 <<"\t\t\t"
 				 <<m_produits[i]->getQuantiteDisponible()<<std::endl;
 	}
+	std::cout<<std::endl;
 }
 
 void Magasin::affichageProduitParNom(std::string t_nom_produit){
-	std::cout<<"Details du produit : "<<std::endl;
+	std::cout<<"Details du produit : "<<std::endl<<std::endl;
 	for(int i=0; i<m_produits.size(); i++){
 		if(m_produits[i]->getTitreProduit()==t_nom_produit){
 			std::cout<<m_produits[i]->getTitreProduit()
@@ -52,6 +53,7 @@ void Magasin::affichageProduitParNom(std::string t_nom_produit){
 				 	<<m_produits[i]->getQuantiteDisponible()<<std::endl;
 		}
 	}
+	std::cout<<std::endl;
 }
 void Magasin::majQuantiteProduit(std::string t_nom_produit, int t_quantite_produit){
 	for(int i=0; i<m_produits.size(); i++){

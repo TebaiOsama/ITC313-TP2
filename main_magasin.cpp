@@ -26,5 +26,8 @@ int main(){
 	Magasin micro(produits);
 
 	micro.affichageProduits();
+	micro.affichageProduitParNom("Switch");
+	micro.majQuantiteProduit("Switch", 22);
+	micro.affichageProduits();
 	return 0;
 }
