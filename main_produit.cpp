@@ -10,8 +10,7 @@
 #include "Produit.h"
 
 std::ostream& operator<<(std::ostream& t_flux, Produit& t_produit){
-	t_flux<<"ID : "<<t_produit.getIdProduit()<<std::endl
-		  <<"Titre Produit : "<<t_produit.getTitreProduit()<<std::endl
+	t_flux<<"Titre Produit : "<<t_produit.getTitreProduit()<<std::endl
 	  	  <<"Description Produit : "<<t_produit.getDescriptionProduit()<<std::endl
 		  <<"Quantite Disponible : "<<t_produit.getQuantiteDisponible()<<std::endl
 		  <<"Prix Produit : "<<t_produit.getPrixProduit()<<std::endl;
@@ -19,6 +18,6 @@ std::ostream& operator<<(std::ostream& t_flux, Produit& t_produit){
 }
 
 int main(){
-	Produit Switch(4,"Nintendo",54);
+	Produit Switch("Nintendo",54);
 	std::cout<<Switch;
 }

@@ -7,13 +7,11 @@
   */
 
 
-
 #include "Produit.h"
 #include <string>
 
-
-Produit::Produit(int t_id_produit, std::string t_titre_produit, double t_prix_produit, std::string t_description_produit, int t_quantite_disponible){
-	m_id_produit = t_id_produit;
+Produit::Produit(){}
+Produit::Produit(std::string t_titre_produit, double t_prix_produit, int t_quantite_disponible, std::string t_description_produit){
 	m_titre_produit = t_titre_produit;
 	m_quantite_disponible = t_quantite_disponible;
 	m_prix_produit = t_prix_produit;
@@ -21,9 +19,6 @@ Produit::Produit(int t_id_produit, std::string t_titre_produit, double t_prix_pr
 }
 
 //getters
-int Produit::getIdProduit() const{
-	return m_id_produit;
-}
 std::string Produit::getTitreProduit() const{
 	return m_titre_produit;
 }
