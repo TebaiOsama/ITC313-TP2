@@ -27,6 +27,7 @@ public:
 	//methodes
 	//Q3
 	void ajoutProduit(std::string t_titre_produit, double t_prix_produit, int t_quantite_disponible=1, std::string t_description_produit=""); //ajout d'un produit dans la liste produits
+	void tabulations(int t_longeur_mot, bool t_name); //affiche le bon nombre de tabulations pour les deux methodes d'affichage
 	void affichageProduits(); //affichage des produits dans la liste produits
 	void affichageProduitParNom(std::string t_nom_produit); //on demande d'afficher tous les produits avec le titre mis en parametre
 	void majQuantiteProduit(std::string t_nom_produit, int t_quantite_produit); //on met a jour la quantite d'un produit dans le magasin

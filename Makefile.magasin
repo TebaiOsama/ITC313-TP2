@@ -1,7 +1,7 @@
 # Makefile with dependencies management
 
-CXX        = clang++
-CXXFLAGS   = -Wall -Wextra -std=c++0x
+CXX        = g++
+CXXFLAGS   = -Wall -Wextra -std=c++11
 DEPFLAGS   = -MMD
 LDFLAGS    = 
 # Replace tp.cpp with the cpp files that need to be compiled

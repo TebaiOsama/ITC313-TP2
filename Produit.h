@@ -10,6 +10,7 @@
 #define _Produit_h
 
 #include <string>
+#include <iostream>
 
 class Produit{
 private:
@@ -28,5 +29,7 @@ public:
 	//setters
 	void setQuantiteDisponible(int t_quantite_disponible);
 };
+
+std::ostream& operator<<(std::ostream& t_flux, Produit& t_produit);
 
 #endif

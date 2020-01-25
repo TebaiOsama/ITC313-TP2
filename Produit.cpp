@@ -8,7 +8,7 @@
 
 
 #include "Produit.h"
-#include <string>
+
 
 Produit::Produit(){}
 Produit::Produit(std::string t_titre_produit, double t_prix_produit, int t_quantite_disponible, std::string t_description_produit){
@@ -34,4 +34,12 @@ double Produit::getPrixProduit() const{
 //setters
 void Produit::setQuantiteDisponible(int t_quantite_disponible){
 	m_quantite_disponible = t_quantite_disponible;
+}
+
+std::ostream& operator<<(std::ostream& t_flux, Produit& t_produit){
+	t_flux<<"Titre Produit : "<<t_produit.getTitreProduit()<<std::endl
+	  	  <<"Description Produit : "<<t_produit.getDescriptionProduit()<<std::endl
+		  <<"Quantite Disponible : "<<t_produit.getQuantiteDisponible()<<std::endl
+		  <<"Prix Produit : "<<t_produit.getPrixProduit()<<std::endl;
+	return t_flux;
 }

@@ -6,16 +6,8 @@
   * Summary:  Testing of class Produit
   */
 
-#include <iostream>
-#include "Produit.h"
 
-std::ostream& operator<<(std::ostream& t_flux, Produit& t_produit){
-	t_flux<<"Titre Produit : "<<t_produit.getTitreProduit()<<std::endl
-	  	  <<"Description Produit : "<<t_produit.getDescriptionProduit()<<std::endl
-		  <<"Quantite Disponible : "<<t_produit.getQuantiteDisponible()<<std::endl
-		  <<"Prix Produit : "<<t_produit.getPrixProduit()<<std::endl;
-	return t_flux;
-}
+#include "Produit.h"
 
 int main(){
 	Produit Switch("Nintendo",54);
