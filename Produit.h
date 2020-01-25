@@ -6,32 +6,32 @@
   * Summary:  Declaration of the class Produit
   */
 
-#ifndef _produit_h
-#define _produit_h
+#ifndef _Produit_h
+#define _Produit_h
 
 #include <string>
+#include <iostream>
 
 class Produit{
 private:
-	int m_id_produit;
 	std::string m_titre_produit;
 	std::string m_description_produit;
 	int m_quantite_disponible;
 	double m_prix_produit;
 public:
-	Produit(int t_id_produit, std::string t_titre_produit, double t_prix_produit, std::string t_description_produit="", int t_quantite_disponible=0);
+	Produit();
+	Produit(std::string t_titre_produit, double t_prix_produit, int t_quantite_disponible=1, std::string t_description_produit="");
 	//getters
-	int getIdProduit() const;
 	std::string getTitreProduit() const;
 	std::string getDescriptionProduit() const;
 	int getQuantiteDisponible() const;
 	double getPrixProduit() const;
 	//setters
 	void setQuantiteDisponible(int t_quantite_disponible);
-	void setTitreProduit(std::string t_titre_produit);
-	void setDescriptionProduit(std::string t_description_produit);
-	void setPrixProduit(double t_prix_produit);
 	//methodes
+	void tabulations(int t_longeur_mot, bool t_name); //affiche le bon nombre de tabulations pour les deux methodes d'affichage
 };
+
+std::ostream& operator<<(std::ostream& t_flux, Produit& t_produit);
 
 #endif

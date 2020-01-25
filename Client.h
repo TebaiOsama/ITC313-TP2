@@ -16,23 +16,22 @@
 class Client{
 	public:
 		Client(int t_id_client, std::string t_nom_client, 
-		std::string t_prenom_client, std::vector<Produit> t_listeproduits); //constructeur
+		std::string t_prenom_client, std::vector<Produit> t_listeproduits={}); //constructeur
 		//setters
-		void setIdClient(int t_id_client);
-		void setNomClient(std::string t_nom_client);
-		void setPrenomClient(std::string t_prenom_client);
-		void setListeProduits(std::vector<Produit> t_listeproduits);
+		// void setIdClient(int t_id_client);
+		// void setNomClient(std::string t_nom_client);
+		// void setPrenomClient(std::string t_prenom_client);
+		// void setListeProduits(std::vector<Produit> t_listeproduits);
 		//getters
 		int getIdClient();
 		std::string getNomClient();
 		std::string getPrenomClient();
 		std::vector<Produit> getListeProduits();
 		//methodes
-		void addproduit(Produit* nom_produit);
+		void addproduit(Produit produit);
 		void viderlisteproduits();
-		void modifquantiteobjet(Produit* t_produit, int n=0);
-		void supprimerproduit(Produit t_produit);
-
+		void modifquantiteobjet(std::string t_nom_produit, int t_quantite_produit);
+		void supprimerproduit(std::string t_nom_produit);
 
 	
 	private:
@@ -43,4 +42,5 @@ class Client{
 		
 };
 
+std::ostream& operator<<(std::ostream& t_flux, Client& t_client);
 #endif
