@@ -29,19 +29,6 @@ void Magasin::ajoutProduit(std::string t_titre_produit, double t_prix_produit, i
 	m_produits.push_back(new Produit(t_titre_produit, t_prix_produit, t_quantite_disponible, t_description_produit));
 }
 
-void Magasin::tabulations(int t_longeur_mot, bool t_name){
-	int tabs = t_longeur_mot/8;//une tabulation vaut 8 espaces
-	int i=0;
-	if(t_name)
-		tabs=3-tabs; 
-	else
-		tabs=4-tabs; 
-
-	while(i<tabs){
-			std::cout<<"\t"; //on affiche le nombre de tabulations
-			i++;
-		}
-}
 
 void Magasin::affichageProduits(){
 	std::cout<<"Produits disponibles : "<<std::endl<<std::endl;
@@ -51,6 +38,9 @@ void Magasin::affichageProduits(){
 		tabulations(m_produits[i]->getTitreProduit().length(), true);
 		std::cout<<m_produits[i]->getDescriptionProduit();
 		tabulations(m_produits[i]->getDescriptionProduit().length(), false);
+		m_produits[i].tabulations(m_produits[i]->getTitreProduit().length(), true);
+		std::cout<<m_produits[i]->getDescriptionProduit();
+		m_produits[i].tabulations(m_produits[i]->getDescriptionProduit().length(), false);
 		std::cout<<m_produits[i]->getQuantiteDisponible()
 				 <<"\t\t"
 				 <<m_produits[i]->getPrixProduit()<<"€"<<std::endl;
@@ -66,6 +56,9 @@ void Magasin::affichageProduitParNom(std::string t_nom_produit){
 			tabulations(m_produits[i]->getTitreProduit().length(), true);
 			std::cout<<m_produits[i]->getDescriptionProduit();
 			tabulations(m_produits[i]->getDescriptionProduit().length(), false);
+			m_produits[i].tabulations(m_produits[i]->getTitreProduit().length(), true);
+			std::cout<<m_produits[i]->getDescriptionProduit();
+			m_produits[i].tabulations(m_produits[i]->getDescriptionProduit().length(), false);
 			std::cout<<m_produits[i]->getQuantiteDisponible()
 				     <<"\t\t"
 				     <<m_produits[i]->getPrixProduit()<<"€"<<std::endl;

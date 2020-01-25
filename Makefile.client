@@ -1,19 +1,14 @@
 # Makefile with dependencies management
 
-<<<<<<< HEAD
 CXX        = g++
 CXXFLAGS   = -Wall -Wextra -std=c++11
-=======
-CXX        = clang++
-CXXFLAGS   = -Wall -Wextra -std=c++0x
->>>>>>> Client
 DEPFLAGS   = -MMD
 LDFLAGS    = 
 # Replace tp.cpp with the cpp files that need to be compiled
-SRCS       = Produit.cpp main_produit.cpp
+SRCS       = Client.cpp main_client.cpp Produit.cpp
 OBJS       = $(SRCS:.cpp=.o)
 # Replace tp_main with the name you want to give to your executable file
-TARGET     = main_produit
+TARGET     = main_client
 DEPS	   = $(OBJS:.o=.d)
 
 all: $(TARGET)

@@ -28,6 +28,9 @@ public:
 	double getPrixProduit() const;
 	//setters
 	void setQuantiteDisponible(int t_quantite_disponible);
+
+	//methodes
+	void tabulations(int t_longeur_mot, bool t_name); //affiche le bon nombre de tabulations pour les deux methodes d'affichage
 };
 
 std::ostream& operator<<(std::ostream& t_flux, Produit& t_produit);

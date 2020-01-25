@@ -36,6 +36,23 @@ void Produit::setQuantiteDisponible(int t_quantite_disponible){
 	m_quantite_disponible = t_quantite_disponible;
 }
 
+
+//methodes
+void Produit::tabulations(int t_longeur_mot, bool t_name){
+	int tabs = t_longeur_mot/8;//une tabulation vaut 8 espaces
+	int i=0;
+	if(t_name)
+		tabs=3-tabs; 
+	else
+		tabs=4-tabs; 
+
+	while(i<tabs){
+			std::cout<<"\t"; //on affiche le nombre de tabulations
+			i++;
+		}
+}
+
+//surcharge d'operateur
 std::ostream& operator<<(std::ostream& t_flux, Produit& t_produit){
 	t_flux<<"Titre Produit : "<<t_produit.getTitreProduit()<<std::endl
 	  	  <<"Description Produit : "<<t_produit.getDescriptionProduit()<<std::endl
