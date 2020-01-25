@@ -9,9 +9,12 @@
 #ifndef _Client_h
 #define _Client_h
 
-#include <string>
 #include "Produit.h"
 #include <vector>
+#include <iostream>
+#include <string>
+
+
 
 class Client{
 	public:

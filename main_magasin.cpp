@@ -12,7 +12,7 @@
 #include "Magasin.h"
 #include <string>
 #include <vector>
-
+ 
 int main(){
 
 	//Q1
@@ -28,7 +28,14 @@ int main(){
 	lidl.majQuantiteProduit("Abbracci",55);
 	lidl.affichageProduitParNom("Abbracci");
 
-	
+	//Q5
+
+	lidl.ajoutClient("Tebai", "Osama");
+	lidl.ajoutClient("Forrer", "Francois");
+	lidl.affichageClients();
+	lidl.affichageClientParNom("Tebai", "Osama");
+	lidl.affichageClientParNom(2);
+
 	// std::vector<Produit*> produits;
 	// Produit p("PS4", 450, 200, "Console Sony");
 	// produits.push_back(&p);

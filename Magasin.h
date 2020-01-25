@@ -9,15 +9,18 @@
 #ifndef _Magasin_h
 #define _Magasin_h
 
-#include <vector>
 #include "Produit.h"
-//#include "Client.h"
+#include "Client.h"
 //#include "Commande.h"
+#include <vector>
+#include <string>
+#include <iostream>
+
 
 class Magasin{
 private:
 	std::vector<Produit*> m_produits;
-	//std::vector<Client*> m_clients;
+	std::vector<Client*> m_clients;
 	//std::vector<Commande*> m_commandes;
 public:
 	Magasin();
@@ -32,9 +35,10 @@ public:
 	void affichageProduitParNom(std::string t_nom_produit); //on demande d'afficher tous les produits avec le titre mis en parametre
 	void majQuantiteProduit(std::string t_nom_produit, int t_quantite_produit); //on met a jour la quantite d'un produit dans le magasin
 	//Q5
-	void ajoutClient(); //ajout d'un nouveau client au magasin
+	void ajoutClient(std::string t_nom_client, std::string t_prenom_client); //ajout d'un nouveau client au magasin
 	void affichageClients(); //affichage a l'ecran des clients d'un magasin
-	void affichageClient(); //affichage a l'ecran d'un client avec un Nom et Prenom ou un ID
+	void affichageClientParNom(std::string t_nom_client, std::string t_prenom_client); //affichage a l'ecran d'un client avec un Nom et Prenom ou un ID
+	void affichageClientParNom(int t_id_client);
 	void ajoutProduitPanierClient(); //ajouter un produit à un panier d'achat d'un client
 	void effacerProduitPanierClient(); //supprimer un produit à un panier d'achat d'un client
 	void setProduitPanierClient(); //modifier quantite de produits d'un panier d'achat d'un client
