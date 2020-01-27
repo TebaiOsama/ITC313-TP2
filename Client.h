@@ -31,10 +31,11 @@ class Client{
 		std::string getPrenomClient();
 		std::vector<Produit> getListeProduits();
 		//methodes
-		void addproduit(Produit produit);
-		void viderlisteproduits();
-		void modifquantiteobjet(std::string t_nom_produit, int t_quantite_produit);
-		void supprimerproduit(std::string t_nom_produit);
+		void addProduit(Produit produit);
+		void viderListeProduits();
+		void modifQuantiteObjet(std::string t_nom_produit, int t_quantite_produit);
+		void supprimerProduit(std::string t_nom_produit);
+		int getQuantiteObjet(std::string t_nom_produit);
 
 	
 	private:

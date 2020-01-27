@@ -18,12 +18,12 @@ int main(){
 	Produit Produit1("Patate", 25.5);
 	Produit Produit2("Bananes", 1.21);
 	Produit Produit3("Pommes", 2.61);
-	Client1.addproduit(Produit1);
+	Client1.addProduit(Produit1);
 	std::cout<<Client1;
-	Client1.viderlisteproduits();
-	Client1.addproduit(Produit2);
-	Client1.addproduit(Produit3);
-	Client1.modifquantiteobjet("Bananes", 12);
+	Client1.viderListeProduits();
+	Client1.addProduit(Produit2);
+	Client1.addProduit(Produit3);
+	Client1.modifQuantiteObjet("Bananes", 12);
 
 	std::cout<<Client1;
 	// std::vector<Produit> panier;

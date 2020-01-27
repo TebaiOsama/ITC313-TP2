@@ -6,11 +6,7 @@
   * Summary:  Definition of the class Client
   */
 
-#include <string>
-#include <iostream>
-#include <vector>
 #include "Client.h"
-#include "Produit.h"
 
 Client::Client(int t_id_client, std::string t_nom_client, 
 	std::string t_prenom_client, std::vector<Produit> t_listeproduits){
@@ -48,15 +44,15 @@ std::vector<Produit> Client::getListeProduits(){
 	return m_listeproduits;
 }
 
-void Client::addproduit(Produit produit){
+void Client::addProduit(Produit produit){
 	m_listeproduits.push_back(produit);
 }
 
-void Client::viderlisteproduits(){
+void Client::viderListeProduits(){
 	m_listeproduits.clear();
 }
 
-void Client::modifquantiteobjet(std::string t_nom_produit, int t_quantite_produit){
+void Client::modifQuantiteObjet(std::string t_nom_produit, int t_quantite_produit){
 	for(int i=0; (unsigned)i<m_listeproduits.size(); i++){
 		if(m_listeproduits[i].getTitreProduit()==t_nom_produit){
 			m_listeproduits[i].setQuantiteDisponible(t_quantite_produit);
@@ -92,7 +88,7 @@ void Client::modifquantiteobjet(std::string t_nom_produit, int t_quantite_produi
 // }
 
 
-void Client::supprimerproduit(std::string t_nom_produit){
+void Client::supprimerProduit(std::string t_nom_produit){
 	for(int i=0; (unsigned)i<m_listeproduits.size(); i++){
 		if(m_listeproduits[i].getTitreProduit()==t_nom_produit){
 			m_listeproduits.erase(m_listeproduits.begin()+i);
@@ -100,6 +96,8 @@ void Client::supprimerproduit(std::string t_nom_produit){
 		}
 	}
 }
+
+
 // void Client::supprimerproduit(Produit t_produit){
 // 	int pos = 0;
 // 	for(int i=0; i < m_listeproduits.size() ; i++){
@@ -109,6 +107,14 @@ void Client::supprimerproduit(std::string t_nom_produit){
 // 	//m_listeproduits.erase(std::remove(m_listeproduits.begin(), m_listeproduits.end(), t_produit), m_listeproduits.end());
 // }
 
+
+int Client::getQuantiteObjet(std::string t_nom_produit){
+	for(int i=0; (unsigned)i<m_listeproduits.size();i++){
+		if(m_listeproduits[i].getTitreProduit()==t_nom_produit)
+			return m_listeproduits[i].getQuantiteDisponible();
+	}
+	return 0;
+}
 
 std::ostream& operator<<(std::ostream& t_flux, Client& t_client){
 

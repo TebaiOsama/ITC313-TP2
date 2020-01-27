@@ -125,7 +125,7 @@ void Magasin::ajoutProduitPanierClient(std::string t_nom_client, std::string t_p
 			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
 				if(m_produits[j]->getTitreProduit()==t_nom_produit){
 					if(m_produits[j]->getQuantiteDisponible()>0){//on verifie si la quantite disponible est non nulle
-						m_clients[i]->addproduit(*m_produits[j]);
+						m_clients[i]->addProduit(*m_produits[j]);
 						m_produits[j]->setQuantiteDisponible(m_produits[j]->getQuantiteDisponible()-1);
 						break;
 					}
@@ -143,7 +143,7 @@ void Magasin::ajoutProduitPanierClient(int t_id_client, std::string t_nom_produi
 			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
 				if(m_produits[j]->getTitreProduit()==t_nom_produit){
 					if(m_produits[j]->getQuantiteDisponible()>0){//on verifie si la quantite disponible est non nulle
-						m_clients[i]->addproduit(*m_produits[j]);
+						m_clients[i]->addProduit(*m_produits[j]);
 						m_produits[j]->setQuantiteDisponible(m_produits[j]->getQuantiteDisponible()-1);
 						break;
 					}
@@ -159,8 +159,10 @@ void Magasin::effacerProduitPanierClient(std::string t_nom_client, std::string t
 	for(int i=0; (unsigned)i<m_clients.size(); i++){	//on va essayer de trouver le client pour mettre le produit dans son panier
 		if(m_clients[i]->getNomClient()==t_nom_client && m_clients[i]->getPrenomClient()==t_prenom_client){
 			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
-				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, on l'efface
-					delete m_produits[j];
+				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, on l'efface et on ajoute tous les produits qu'on vient d'effacer dans le magasin
+					m_produits[j]->setQuantiteDisponible(m_produits[j]->getQuantiteDisponible()+m_clients[i]->getQuantiteObjet(t_nom_produit));
+					m_clients[i]->supprimerProduit(t_nom_produit);
+
 				}
 			}
 		}
@@ -172,7 +174,8 @@ void Magasin::effacerProduitPanierClient(int t_id_client, std::string t_nom_prod
 		if(m_clients[i]->getIdClient()==t_id_client){
 			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
 				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, on l'efface
-					delete m_produits[j];
+					m_produits[j]->setQuantiteDisponible(m_produits[j]->getQuantiteDisponible()+m_clients[i]->getQuantiteObjet(t_nom_produit));
+					m_clients[i]->supprimerProduit(t_nom_produit);
 				}
 			}
 		}
@@ -184,7 +187,8 @@ void Magasin::setProduitPanierClient(std::string t_nom_client, std::string t_pre
 		if(m_clients[i]->getNomClient()==t_nom_client && m_clients[i]->getPrenomClient()==t_prenom_client){
 			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
 				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, 
-					majQuantiteProduit(t_nom_produit, t_quantite_produit);
+					m_clients[i]->modifQuantiteObjet(t_nom_produit, t_quantite_produit);
+					m_produits[j]->setQuantiteDisponible(m_produits[j]->getQuantiteDisponible()-t_quantite_produit);
 					std::cout<<"La quantitée du produit "<<t_nom_produit<<" a été correctement modifiée !"<<std::endl;
 				}
 			}
@@ -197,7 +201,8 @@ void Magasin::setProduitPanierClient(int t_id_client, std::string t_nom_produit,
 		if(m_clients[i]->getIdClient()==t_id_client){
 			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
 				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, 
-					majQuantiteProduit(t_nom_produit, t_quantite_produit);
+					m_clients[i]->modifQuantiteObjet(t_nom_produit, t_quantite_produit);
+					m_produits[j]->setQuantiteDisponible(m_produits[j]->getQuantiteDisponible()-t_quantite_produit);
 					std::cout<<"La quantitée du produit "<<t_nom_produit<<" a été correctement modifiée !"<<std::endl;
 				}
 			}

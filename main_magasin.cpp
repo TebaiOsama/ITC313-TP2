@@ -35,7 +35,7 @@ int main(){
 
 	lidl.effacerProduitPanierClient("Tebai", "Osama","Abbracci");
 	lidl.ajoutProduitPanierClient("Tebai", "Osama","Abbracci");
-	lidl.setProduitPanierClient("Tebai", "Osama","Gocciole");
+	lidl.setProduitPanierClient("Tebai", "Osama","Gocciole", 12);
 
 
 
