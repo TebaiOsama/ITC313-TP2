@@ -26,12 +26,19 @@ int main(){
 	//Q5
 	lidl.ajoutClient("Tebai", "Osama");
 	lidl.ajoutClient("Forrer", "Francois");
-	// lidl.affichageClients();
-	// lidl.affichageClientParNom("Tebai", "Osama");
-	// lidl.affichageClientParNom(2);
+	lidl.affichageClients();
+	lidl.affichageClientParNom("Tebai", "Osama");
+	lidl.affichageClientParNom(2);
 
 	lidl.ajoutProduitPanierClient("Tebai", "Osama","Abbracci");
 	lidl.affichageProduits();
+
+	lidl.effacerProduitPanierClient("Tebai", "Osama","Abbracci");
+	lidl.ajoutProduitPanierClient("Tebai", "Osama","Abbracci");
+	lidl.setProduitPanierClient("Tebai", "Osama","Gocciole");
+
+
+
 
 	// std::vector<Produit*> produits;
 	// Produit p("PS4", 450, 200, "Console Sony");

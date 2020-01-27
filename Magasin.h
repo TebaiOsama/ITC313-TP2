@@ -42,7 +42,8 @@ public:
 	void ajoutProduitPanierClient(int t_id_client, std::string t_nom_produit);
 	void effacerProduitPanierClient(std::string t_nom_client, std::string t_prenom_client, std::string t_nom_produit); //supprimer un produit à un panier d'achat d'un client
 	void effacerProduitPanierClient(int t_id_client, std::string t_nom_produit);
-	void setProduitPanierClient(); //modifier quantite de produits d'un panier d'achat d'un client
+	void setProduitPanierClient(std::string t_nom_client, std::string t_prenom_client, std::string t_nom_produit, int t_quantite_produit); //modifier quantite de produits d'un panier d'achat d'un client
+	void setProduitPanierClient(int t_id_client, std::string t_nom_produit, int t_quantite_produit);
 };
 
 #endif

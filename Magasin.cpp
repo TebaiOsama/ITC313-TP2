@@ -160,7 +160,7 @@ void Magasin::effacerProduitPanierClient(std::string t_nom_client, std::string t
 		if(m_clients[i]->getNomClient()==t_nom_client && m_clients[i]->getPrenomClient()==t_prenom_client){
 			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
 				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, on l'efface
-					m_produits.erase(m_produits[j]->begin()+j);
+					delete m_produits[j];
 				}
 			}
 		}
@@ -172,7 +172,33 @@ void Magasin::effacerProduitPanierClient(int t_id_client, std::string t_nom_prod
 		if(m_clients[i]->getIdClient()==t_id_client){
 			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
 				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, on l'efface
-					m_produits.erase(m_produits[j].begin()+j);
+					delete m_produits[j];
+				}
+			}
+		}
+	}
+}
+
+void Magasin::setProduitPanierClient(std::string t_nom_client, std::string t_prenom_client, std::string t_nom_produit, int t_quantite_produit){
+	for(int i=0; (unsigned)i<m_clients.size(); i++){	//on va essayer de trouver le client pour mettre le produit dans son panier
+		if(m_clients[i]->getNomClient()==t_nom_client && m_clients[i]->getPrenomClient()==t_prenom_client){
+			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
+				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, 
+					majQuantiteProduit(t_nom_produit, t_quantite_produit);
+					std::cout<<"La quantitée du produit "<<t_nom_produit<<" a été correctement modifiée !"<<std::endl;
+				}
+			}
+		}
+	}
+}
+
+void Magasin::setProduitPanierClient(int t_id_client, std::string t_nom_produit, int t_quantite_produit){
+	for(int i=0; (unsigned)i<m_clients.size(); i++){	
+		if(m_clients[i]->getIdClient()==t_id_client){
+			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
+				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, 
+					majQuantiteProduit(t_nom_produit, t_quantite_produit);
+					std::cout<<"La quantitée du produit "<<t_nom_produit<<" a été correctement modifiée !"<<std::endl;
 				}
 			}
 		}
