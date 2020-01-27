@@ -6,12 +6,7 @@
   * Summary:  Testing of class Magasin
   */
 
-#include "Produit.h"
-//#include "Client.h"
-//#include "Commande.h"
 #include "Magasin.h"
-#include <string>
-#include <vector>
  
 int main(){
 
@@ -24,17 +19,19 @@ int main(){
 	lidl.ajoutProduit("Cookies", 3.4, 125, "Biscuits Americains");
 
 	lidl.affichageProduits();
-	lidl.affichageProduitParNom("Abbracci");
-	lidl.majQuantiteProduit("Abbracci",55);
-	lidl.affichageProduitParNom("Abbracci");
+	// lidl.affichageProduitParNom("Abbracci");
+	// lidl.majQuantiteProduit("Abbracci",55);
+	// lidl.affichageProduitParNom("Abbracci");
 
 	//Q5
-
 	lidl.ajoutClient("Tebai", "Osama");
 	lidl.ajoutClient("Forrer", "Francois");
-	lidl.affichageClients();
-	lidl.affichageClientParNom("Tebai", "Osama");
-	lidl.affichageClientParNom(2);
+	// lidl.affichageClients();
+	// lidl.affichageClientParNom("Tebai", "Osama");
+	// lidl.affichageClientParNom(2);
+
+	lidl.ajoutProduitPanierClient("Tebai", "Osama","Abbracci");
+	lidl.affichageProduits();
 
 	// std::vector<Produit*> produits;
 	// Produit p("PS4", 450, 200, "Console Sony");
