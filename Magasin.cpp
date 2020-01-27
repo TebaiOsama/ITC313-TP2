@@ -118,3 +118,63 @@ void Magasin::affichageClientParNom(int t_id_client){
 	}	
 	std::cout<<std::endl;
 }
+
+void Magasin::ajoutProduitPanierClient(std::string t_nom_client, std::string t_prenom_client, std::string t_nom_produit){
+	for(int i=0; (unsigned)i<m_clients.size(); i++){	//on va essayer de trouver le client pour mettre le produit dans son panier
+		if(m_clients[i]->getNomClient()==t_nom_client && m_clients[i]->getPrenomClient()==t_prenom_client){
+			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
+				if(m_produits[j]->getTitreProduit()==t_nom_produit){
+					if(m_produits[j]->getQuantiteDisponible()>0){//on verifie si la quantite disponible est non nulle
+						m_clients[i]->addproduit(*m_produits[j]);
+						m_produits[j]->setQuantiteDisponible(m_produits[j]->getQuantiteDisponible()-1);
+						break;
+					}
+					else
+						std::cout<<"Le produit n'est plus disponible"<<std::endl;
+				}
+			}
+		}
+	}
+}
+
+void Magasin::ajoutProduitPanierClient(int t_id_client, std::string t_nom_produit){
+	for(int i=0; (unsigned)i<m_clients.size(); i++){	
+		if(m_clients[i]->getIdClient()==t_id_client){
+			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
+				if(m_produits[j]->getTitreProduit()==t_nom_produit){
+					if(m_produits[j]->getQuantiteDisponible()>0){//on verifie si la quantite disponible est non nulle
+						m_clients[i]->addproduit(*m_produits[j]);
+						m_produits[j]->setQuantiteDisponible(m_produits[j]->getQuantiteDisponible()-1);
+						break;
+					}
+					else
+						std::cout<<"Le produit n'est plus disponible"<<std::endl;
+				}
+			}
+		}
+	}
+}
+
+void Magasin::effacerProduitPanierClient(std::string t_nom_client, std::string t_prenom_client, std::string t_nom_produit){
+	for(int i=0; (unsigned)i<m_clients.size(); i++){	//on va essayer de trouver le client pour mettre le produit dans son panier
+		if(m_clients[i]->getNomClient()==t_nom_client && m_clients[i]->getPrenomClient()==t_prenom_client){
+			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
+				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, on l'efface
+					m_produits.erase(m_produits[j]->begin()+j);
+				}
+			}
+		}
+	}
+}
+
+void Magasin::effacerProduitPanierClient(int t_id_client, std::string t_nom_produit){
+	for(int i=0; (unsigned)i<m_clients.size(); i++){	
+		if(m_clients[i]->getIdClient()==t_id_client){
+			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
+				if(m_produits[j]->getTitreProduit()==t_nom_produit){ //si on trouve le produit, on l'efface
+					m_produits.erase(m_produits[j].begin()+j);
+				}
+			}
+		}
+	}
+}
