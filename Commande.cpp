@@ -48,3 +48,7 @@ std::ostream& operator<<(std::ostream& t_flux, Commande& t_commande){
 		  	  
 	return t_flux;
 }
+
+void Commande::setStatus(bool t_status){
+	m_status = t_status;
+}

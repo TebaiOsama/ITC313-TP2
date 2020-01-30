@@ -17,6 +17,7 @@ public:
 	Client getClient();
 	std::vector<Produit> getProduitsCommandes();
 	bool getStatus();
+	void setStatus(bool t_status);
 };
 
 std::ostream& operator<<(std::ostream& t_flux, Commande& t_commande);

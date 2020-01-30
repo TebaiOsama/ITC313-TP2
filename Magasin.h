@@ -11,7 +11,7 @@
 
 #include "Produit.h"
 #include "Client.h"
-//#include "Commande.h"
+#include "Commande.h"
 #include <vector>
 #include <string>
 #include <iostream>
@@ -21,7 +21,7 @@ class Magasin{
 private:
 	std::vector<Produit*> m_produits;
 	std::vector<Client*> m_clients;
-	//std::vector<Commande*> m_commandes;
+	std::vector<Commande*> m_commandes;
 public:
 	Magasin();
 	Magasin(std::vector<Produit*> t_produits);
@@ -44,6 +44,13 @@ public:
 	void effacerProduitPanierClient(int t_id_client, std::string t_nom_produit);
 	void setProduitPanierClient(std::string t_nom_client, std::string t_prenom_client, std::string t_nom_produit, int t_quantite_produit); //modifier quantite de produits d'un panier d'achat d'un client
 	void setProduitPanierClient(int t_id_client, std::string t_nom_produit, int t_quantite_produit);
+
+	//Q7
+	void ajoutCommande(Client t_client, std::vector<Produit> t_produits_commandes, bool t_status);
+	void validerCommande(Commande t_commande);
+	void majStatusCommande(bool t_status, Commande t_commande);
+	void afficherCommandes();
+	void afficherCommandesClient(int m_id_client);
 };
 
 #endif
