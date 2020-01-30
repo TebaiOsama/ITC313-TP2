@@ -40,6 +40,30 @@ int main(){
 
 
 
+	//Q7c
+	Client premier(1, "Tebai","Osama");
+	std::vector<Produit> premiersprod;
+	premiersprod.push_back(Produit("Television", 600));
+	premiersprod.push_back(Produit("PS4", 300));
+	Commande premierecommande(premier, premiersprod, true);
+	lidl.ajoutCommande(premier, premiersprod, true);
+
+	Client deuxieme(2, "Forrer", "Francois");
+	std::vector<Produit> prod0uis;
+	prod0uis.push_back(Produit("Television", 600));
+	prod0uis.push_back(Produit("PS4", 300));
+	lidl.ajoutCommande(deuxieme, prod0uis, true);
+
+	lidl.afficherCommandes();
+
+
+	//Q7b
+	lidl.majStatusCommande(true, premierecommande);
+
+
+	//Q7d
+	lidl.afficherCommandesClient(3);
+
 	// std::vector<Produit*> produits;
 	// Produit p("PS4", 450, 200, "Console Sony");
 	// produits.push_back(&p);

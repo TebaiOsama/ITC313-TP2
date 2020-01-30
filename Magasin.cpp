@@ -209,3 +209,52 @@ void Magasin::setProduitPanierClient(int t_id_client, std::string t_nom_produit,
 		}
 	}
 }
+
+void Magasin::ajoutCommande(Client t_client, std::vector<Produit> t_produits_commandes, bool t_status){
+	m_commandes.push_back(new Commande(t_client, t_produits_commandes, t_status));
+}
+
+void Magasin::validerCommande(Commande t_commande){
+	std::string valid;
+	//std::cout<<m_commandes[m_commandes.size()-1]<<std::endl; // afficher la commande si ce n'est pas fait
+	std::cout<<"Voulez vous valider la commande ? (O ou N) "<<std::endl;
+	std::cin>>valid;
+	if(valid=="o" || valid=="O"){
+		std::cout<<"Commande validée"<<std::endl;
+		m_commandes.push_back(new Commande(t_commande.getClient(), t_commande.getProduitsCommandes(), t_commande.getStatus()));
+	}
+	else if(valid=="n" || valid=="N")
+		std::cout<<"Commande annulée"<<std::endl;
+}
+
+void Magasin::majStatusCommande(bool t_status, Commande t_commande){
+	t_commande.setStatus(t_status);
+}
+
+void Magasin::afficherCommandes(){
+	if(m_commandes.size()==0){
+		std::cout<<"Il n'y a pas de commande";
+	}
+	std::cout<<"Il y a "<<m_commandes.size()<<" commandes :"<<std::endl;
+	for (int i = 0; (unsigned)i < m_commandes.size(); i++){
+		std::cout<<*m_commandes[i]<<std::endl;
+	}
+}
+
+void Magasin::afficherCommandesClient(int m_id_client){
+	int a=0;
+	if(m_commandes.size()==0){
+		std::cout<<"Ce client n'a pas de commande";
+	}
+	else{ 
+		for (int i = 0; (unsigned)i < m_commandes.size(); i++){
+			if(m_clients[i]->getIdClient()==m_id_client)
+			std::cout<<*m_commandes[i]<<std::endl;
+			else
+				a++; // Compteur pour vérifier si il y a des commandes affichées
+		}
+		if((unsigned)a==m_commandes.size())
+			std::cout<<"Ce client n'a pas de commande"<<std::endl;
+	}
+}
+
