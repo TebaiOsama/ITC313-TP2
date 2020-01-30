@@ -7,6 +7,7 @@
   */
 
 #include "Client.h"
+Client::Client(){}
 
 Client::Client(int t_id_client, std::string t_nom_client, 
 	std::string t_prenom_client, std::vector<Produit> t_listeproduits){
