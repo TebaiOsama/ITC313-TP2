@@ -1,3 +1,11 @@
+/** 
+  * File:     Menu.h 
+  * Authors:  O.Tebai/F.Forrer (Osama_Tebai@etu.u-bourgogne.fr/Francois_Forrer@etu.u-bourgogne.fr)
+  * Date:     2020
+  * Course:   C-C++ Programming / Esirem 3A Informatique Electronique 
+  * Summary:  Declaration of the class Menu
+  */
+
 #ifndef _Menu_h
 #define _Menu_h
 

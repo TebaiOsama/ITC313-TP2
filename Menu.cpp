@@ -1,3 +1,11 @@
+/**
+  * File:     Menu.cpp
+  * Authors:  O.Tebai/F.Forrer (Osama_Tebai@etu.u-bourgogne.fr/Francois_Forrer@etu.u-bourgogne.fr)
+  * Date:     2020
+  * Course:   C-C++ Programming / Esirem 3A Informatique Electronique
+  * Summary:  Definition of the class Menu
+  */
+
 #include "Menu.h"
 
 Menu::Menu(){
@@ -18,8 +26,41 @@ bool Menu::VerificationNumerique(){
 }
 
 void Menu::demarrer(){
-	int reponse1;
+
 	system("clear");
+	/*std::ifstream fichier;
+	fichier.open ("save.txt");
+	fichier >> "Produits :\n" ;
+	for(int i=0; (unsigned)i<easystore.getListeProduits().size();i++){
+		fichier >> easystore.getListeProduits()[i]->getTitreProduit()>>std::endl
+				>> easystore.getListeProduits()[i]->getPrixProduit()>>std::endl
+				>> easystore.getListeProduits()[i]->getQuantiteDisponible()>>std::endl
+				>> easystore.getListeProduits()[i]->getDescriptionProduit()>>std::endl;
+	}
+
+	fichier >> "Clients :\n" ;
+	for(int i=0; (unsigned)i<easystore.getListeClients().size();i++){
+		fichier >> easystore.getListeClients()[i]->getIdClient()>>std::endl
+				>> easystore.getListeClients()[i]->getNomClient()>>std::endl
+				>> easystore.getListeClients()[i]->getPrenomClient()>>std::endl;
+	}
+
+	fichier >> "Commandes :\n" ;
+	for(int i=0; (unsigned)i<easystore.getListeCommandes().size();i++){
+		fichier >> easystore.getListeCommandes()[i]->getClient().getIdClient()>>std::endl;
+		for(int j=0; (unsigned)j<easystore.getListeCommandes()[i]->getProduitsCommandes().size(); i++){
+			fichier >> easystore.getListeCommandes()[i]->getProduitsCommandes()[j].getTitreProduit()>>std::endl
+					>> easystore.getListeCommandes()[i]->getProduitsCommandes()[j].getPrixProduit()>>std::endl
+					>> easystore.getListeCommandes()[i]->getProduitsCommandes()[j].getQuantiteDisponible()>>std::endl
+					>> easystore.getListeCommandes()[i]->getProduitsCommandes()[j].getDescriptionProduit()>>std::endl;
+		}
+	}
+	
+	fichier.close();
+	//std::cout<<"Merci pour avoir choisi notre Easystore ! "<<std::endl;
+*/
+	int reponse1;
+	//system("clear");
 	std::cout<<"Choisissez l'action à faire : "<<std::endl<<std::endl
 			 <<"1. Gestion du magasin"<<std::endl
 			 <<"2. Gestion des utilisateurs"<<std::endl

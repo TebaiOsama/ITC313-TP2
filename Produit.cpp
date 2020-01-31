@@ -1,6 +1,6 @@
 /** 
   * File:     Produit.cpp 
-  * Author:   O.Tebai (Osama_Tebai@etu.u-bourgogne.fr)
+  * Author:   F.Forrer/O.Tebai (Francois_Forrer@etu.u-bourgogne.fr/Osama_Tebai@etu.u-bourgogne.fr)
   * Date:     Fall 2019 
   * Course:   C-C++ Programming / Esirem 3A Informatique Electronique 
   * Summary:  Definition of the class Produit
