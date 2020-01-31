@@ -13,6 +13,64 @@ Menu::Menu(){
 	std::cin.ignore();
 
 	//lecture du fichier
+
+	std::ifstream fichier;
+	fichier.open ("save.txt");
+	if(fichier){
+		std::string ligne; //Une variable pour stocker les lignes lues
+		while(getline(fichier,ligne)){
+			if(ligne == "Produits:"){	//On passe la première ligne pour ne pas prendre en compte "Produit:"
+				getline(fichier,ligne);
+			}
+			while(ligne != "Clients:"){ 	//S'assurer qu'il s'agit des produits
+				
+				std::string titre_produit, description_produit;
+				double prix_produit;
+				int quantite_produit;
+
+				titre_produit=ligne;					
+				getline(fichier,ligne);
+
+				prix_produit=stof(ligne);							
+				getline(fichier,ligne);
+
+				quantite_produit=stoi(ligne);						
+				getline(fichier,ligne);
+
+				description_produit=ligne;					
+				getline(fichier,ligne);
+				easystore.ajoutProduit(titre_produit, prix_produit, quantite_produit, description_produit);
+
+			}
+			int i=1;
+			std::string nom, prenom;
+			if(ligne == "Clients:"){	//On passe la première ligne pour ne pas prendre en compte "Client:"
+				getline(fichier,ligne);
+			}
+			while(ligne != "Commandes:"){		//On s'assure qu'il s'agit des clients
+				
+
+				if(stoi(ligne) == i){			//on passe à chaque fois l'id qui s'écrira automatiquement
+					getline(fichier,ligne);
+				}
+
+				nom=ligne;
+				getline(fichier,ligne);
+
+				prenom=ligne;
+				getline(fichier,ligne);
+
+				easystore.ajoutClient(nom, prenom);
+				i++;
+			}
+
+			if(ligne == "Commandes:"){	//On passe la première ligne pour ne pas prendre en compte "Commandes:"
+				std::cout<<ligne <<std::endl;
+				getline(fichier,ligne);
+			}
+			//mettre les composantes des commandes
+		}
+	}
 }
 
 bool Menu::VerificationNumerique(){
@@ -27,40 +85,8 @@ bool Menu::VerificationNumerique(){
 
 void Menu::demarrer(){
 
-	system("clear");
-	/*std::ifstream fichier;
-	fichier.open ("save.txt");
-	fichier >> "Produits :\n" ;
-	for(int i=0; (unsigned)i<easystore.getListeProduits().size();i++){
-		fichier >> easystore.getListeProduits()[i]->getTitreProduit()>>std::endl
-				>> easystore.getListeProduits()[i]->getPrixProduit()>>std::endl
-				>> easystore.getListeProduits()[i]->getQuantiteDisponible()>>std::endl
-				>> easystore.getListeProduits()[i]->getDescriptionProduit()>>std::endl;
-	}
-
-	fichier >> "Clients :\n" ;
-	for(int i=0; (unsigned)i<easystore.getListeClients().size();i++){
-		fichier >> easystore.getListeClients()[i]->getIdClient()>>std::endl
-				>> easystore.getListeClients()[i]->getNomClient()>>std::endl
-				>> easystore.getListeClients()[i]->getPrenomClient()>>std::endl;
-	}
-
-	fichier >> "Commandes :\n" ;
-	for(int i=0; (unsigned)i<easystore.getListeCommandes().size();i++){
-		fichier >> easystore.getListeCommandes()[i]->getClient().getIdClient()>>std::endl;
-		for(int j=0; (unsigned)j<easystore.getListeCommandes()[i]->getProduitsCommandes().size(); i++){
-			fichier >> easystore.getListeCommandes()[i]->getProduitsCommandes()[j].getTitreProduit()>>std::endl
-					>> easystore.getListeCommandes()[i]->getProduitsCommandes()[j].getPrixProduit()>>std::endl
-					>> easystore.getListeCommandes()[i]->getProduitsCommandes()[j].getQuantiteDisponible()>>std::endl
-					>> easystore.getListeCommandes()[i]->getProduitsCommandes()[j].getDescriptionProduit()>>std::endl;
-		}
-	}
-	
-	fichier.close();
-	//std::cout<<"Merci pour avoir choisi notre Easystore ! "<<std::endl;
-*/
 	int reponse1;
-	//system("clear");
+	system("clear");
 	std::cout<<"Choisissez l'action à faire : "<<std::endl<<std::endl
 			 <<"1. Gestion du magasin"<<std::endl
 			 <<"2. Gestion des utilisateurs"<<std::endl
@@ -636,7 +662,7 @@ void Menu::quitter(){
 
 	std::ofstream fichier;
 	fichier.open ("save.txt");
-	fichier << "Produits :\n" ;
+	fichier << "Produits:\n" ;
 	for(int i=0; (unsigned)i<easystore.getListeProduits().size();i++){
 		fichier << easystore.getListeProduits()[i]->getTitreProduit()<<std::endl
 				<< easystore.getListeProduits()[i]->getPrixProduit()<<std::endl
@@ -644,14 +670,14 @@ void Menu::quitter(){
 				<< easystore.getListeProduits()[i]->getDescriptionProduit()<<std::endl;
 	}
 
-	fichier << "Clients :\n" ;
+	fichier << "Clients:\n" ;
 	for(int i=0; (unsigned)i<easystore.getListeClients().size();i++){
 		fichier << easystore.getListeClients()[i]->getIdClient()<<std::endl
 				<< easystore.getListeClients()[i]->getNomClient()<<std::endl
 				<< easystore.getListeClients()[i]->getPrenomClient()<<std::endl;
 	}
 
-	fichier << "Commandes :\n" ;
+	fichier << "Commandes:\n" ;
 	for(int i=0; (unsigned)i<easystore.getListeCommandes().size();i++){
 		fichier << easystore.getListeCommandes()[i]->getClient().getIdClient()<<std::endl;
 		for(int j=0; (unsigned)j<easystore.getListeCommandes()[i]->getProduitsCommandes().size(); i++){
