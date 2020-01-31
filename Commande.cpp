@@ -49,9 +49,7 @@ std::ostream& operator<<(std::ostream& t_flux, Commande& t_commande){
 					 <<t_commande.getProduitsCommandes()[i].getPrixProduit()<<"€"<<std::endl;
 		}
 		std::cout<<std::endl;
-		// for(int i=0; i<produits; i++){
-		// 	std::cout<<t_commande.getProduitsCommandes()[i]<<std::endl;
-		// }
+		
 	}
 		  	  
 	return t_flux;

@@ -1,17 +1,3 @@
 Produits:
-banane
-3
-200
-petite
-poubelle
-10
-250
-grande
 Clients:
-1
-forrer
-francois
-2
-tebai
-osama
 Commandes:

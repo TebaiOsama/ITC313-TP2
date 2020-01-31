@@ -231,7 +231,6 @@ void Magasin::ajoutCommande(Client t_client, std::vector<Produit> t_produits_com
 }
 
 void Magasin::validerCommande(Commande t_commande){
-	std::cout<<"a"<<std::endl;
 	int erreur=0;
 	std::string valid;
 	std::cout<<"Voulez vous valider la commande ? (O ou N) "<<std::endl;

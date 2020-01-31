@@ -153,7 +153,7 @@ void Menu::gestionMagasin(){
 		while(!VerificationNumerique()){
 			std::cin>>quantite_produit;
 		}
-		std::cout<<"Entrez une petite description du produit : "<<std::endl;
+		std::cout<<"Entrez une petite description du produit en séparant les mots avec _ (ex : made_in_china) : "<<std::endl;
 		std::cin>>description_produit;
 		easystore.ajoutProduit(titre_produit, prix_produit, quantite_produit, description_produit);
 		
@@ -327,6 +327,20 @@ void Menu::gestionUtilisateurs(){
 						}
 						if(reponse==2)
 							gestionUtilisateurs();
+					}
+					if(erreur>=2){
+						std::cout<<"Il y a "<<erreur<<" produits de ce nom."<<std::endl;
+						easystore.affichageProduitParNom(nom_produit);
+						std::cout<<"Veuillez ecrire le prix du produit voulu :"<<std::endl;
+						std::cin>>reponse;
+						while(!VerificationNumerique()){
+							std::cin>>reponse;
+						}
+						for(int i=0; (unsigned)i<easystore.getListeProduits().size(); i++){
+							if(easystore.getListeProduits()[i]->getPrixProduit()==reponse){
+								erreur++;
+							}
+						}
 					}
 				}
 				
