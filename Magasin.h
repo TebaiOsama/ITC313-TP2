@@ -24,12 +24,13 @@ private:
 	std::vector<Commande*> m_commandes;
 public:
 	Magasin();
-	Magasin(std::vector<Produit*> t_produits);
-	
+
+	std::vector<Produit*> getListeProduits();
+	std::vector<Client*> getListeClients();
+	std::vector<Commande*> getListeCommandes();
 	//methodes
 	//Q3
 	void ajoutProduit(std::string t_titre_produit, double t_prix_produit, int t_quantite_disponible=1, std::string t_description_produit=""); //ajout d'un produit dans la liste produits
-	
 	void affichageProduits(); //affichage des produits dans la liste produits
 	void affichageProduitParNom(std::string t_nom_produit); //on demande d'afficher tous les produits avec le titre mis en parametre
 	void majQuantiteProduit(std::string t_nom_produit, int t_quantite_produit); //on met a jour la quantite d'un produit dans le magasin
@@ -38,8 +39,8 @@ public:
 	void affichageClients(); //affichage a l'ecran des clients d'un magasin
 	void affichageClientParNom(std::string t_nom_client, std::string t_prenom_client); //affichage a l'ecran d'un client avec un Nom et Prenom ou un ID
 	void affichageClientParNom(int t_id_client);
-	void ajoutProduitPanierClient(std::string t_nom_client, std::string t_prenom_client, std::string t_nom_produit); //ajouter un produit à un panier d'achat d'un client
-	void ajoutProduitPanierClient(int t_id_client, std::string t_nom_produit);
+	void ajoutProduitPanierClient(std::string t_nom_client, std::string t_prenom_client, std::string t_nom_produit, int t_quantite_produit); //ajouter un produit à un panier d'achat d'un client
+	void ajoutProduitPanierClient(int t_id_client, std::string t_nom_produit, int t_quantite_produit);
 	void effacerProduitPanierClient(std::string t_nom_client, std::string t_prenom_client, std::string t_nom_produit); //supprimer un produit à un panier d'achat d'un client
 	void effacerProduitPanierClient(int t_id_client, std::string t_nom_produit);
 	void setProduitPanierClient(std::string t_nom_client, std::string t_prenom_client, std::string t_nom_produit, int t_quantite_produit); //modifier quantite de produits d'un panier d'achat d'un client
@@ -50,7 +51,8 @@ public:
 	void validerCommande(Commande t_commande);
 	void majStatusCommande(bool t_status, Commande t_commande);
 	void afficherCommandes();
-	void afficherCommandesClient(int m_id_client);
+	void afficherCommandesClient(int t_id_client);
+	void afficherCommandesClient(std::string t_nom, std::string t_prenom);
 };
 
 #endif
