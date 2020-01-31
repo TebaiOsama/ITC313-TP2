@@ -594,7 +594,7 @@ void Menu::quitter(){
 	system("clear");
 
 	std::ofstream fichier;
-	fichier.open ("touch.txt");
+	fichier.open ("save.txt");
 	fichier << "Produits :\n" ;
 	for(int i=0; (unsigned)i<easystore.getListeProduits().size();i++){
 		fichier << easystore.getListeProduits()[i]->getTitreProduit()<<std::endl
