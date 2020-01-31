@@ -3,13 +3,13 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
 #include "Magasin.h"
 
 class Menu{
 private:
 
 	Magasin easystore;
-	//int m_iterateur; //iterateur du client choisi par l'utilisateur
 
 public:
 	Menu();
