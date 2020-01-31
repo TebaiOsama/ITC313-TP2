@@ -142,8 +142,8 @@ void Magasin::ajoutProduitPanierClient(std::string t_nom_client, std::string t_p
 			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
 				if(m_produits[j]->getTitreProduit()==t_nom_produit){
 					if(m_produits[j]->getQuantiteDisponible()>0){//on verifie si la quantite disponible est non nulle
-						m_clients[i]->addProduit(*m_produits[j]);
-						m_produits[j]->setQuantiteDisponible(t_quantite_produit);
+						m_clients[i]->addProduit(Produit(t_nom_produit, m_produits[j]->getPrixProduit(), t_quantite_produit, m_produits[j]->getDescriptionProduit()));
+						
 						break;
 					}
 					else
@@ -160,8 +160,7 @@ void Magasin::ajoutProduitPanierClient(int t_id_client, std::string t_nom_produi
 			for(int j=0; (unsigned)j<m_produits.size(); j++){ //si on trouve le client, on cherche le produit dans le magasin
 				if(m_produits[j]->getTitreProduit()==t_nom_produit){
 					if(m_produits[j]->getQuantiteDisponible()>0){//on verifie si la quantite disponible est non nulle
-						m_clients[i]->addProduit(*m_produits[j]);
-						m_produits[j]->setQuantiteDisponible(t_quantite_produit);
+						m_clients[i]->addProduit(Produit(t_nom_produit, m_produits[j]->getPrixProduit(), t_quantite_produit, m_produits[j]->getDescriptionProduit()));
 						break;
 					}
 					else
@@ -235,16 +234,13 @@ void Magasin::validerCommande(Commande t_commande){
 	std::cout<<"a"<<std::endl;
 	int erreur=0;
 	std::string valid;
-	//std::cout<<m_commandes[m_commandes.size()-1]<<std::endl; // afficher la commande si ce n'est pas fait
 	std::cout<<"Voulez vous valider la commande ? (O ou N) "<<std::endl;
 	std::cin>>valid;
 	if(valid=="o" || valid=="O"){
 		for(int i=0; (unsigned)i<t_commande.getProduitsCommandes().size(); i++){
 			for(int j=0; (unsigned)j<m_produits.size(); j++){
 				if(t_commande.getProduitsCommandes()[i].getTitreProduit()==m_produits[j]->getTitreProduit()){
-					std::cout<<"t_commande = "<<t_commande.getProduitsCommandes()[i].getQuantiteDisponible()
-						     <<std::endl<<m_produits[j]->getQuantiteDisponible()<<std::endl;
-					if(t_commande.getProduitsCommandes()[i].getQuantiteDisponible()<=m_produits[j]->getQuantiteDisponible()){
+					if(t_commande.getProduitsCommandes()[i].getQuantiteDisponible()>m_produits[j]->getQuantiteDisponible()){
 						std::cout<<"La quantité disponible n'est pas suffisant pour valider votre commande"<<std::endl;
 						erreur++;
 					}
@@ -256,7 +252,7 @@ void Magasin::validerCommande(Commande t_commande){
 			for(int i=0; (unsigned)i<t_commande.getProduitsCommandes().size(); i++){
 				for(int j=0; (unsigned)j<m_produits.size(); j++){
 					if(t_commande.getProduitsCommandes()[i].getTitreProduit()==m_produits[j]->getTitreProduit()){
-						m_produits[j]->setQuantiteDisponible(t_commande.getProduitsCommandes()[i].getQuantiteDisponible());
+						m_produits[j]->setQuantiteDisponible(m_produits[j]->getQuantiteDisponible()-t_commande.getProduitsCommandes()[i].getQuantiteDisponible());
 					}
 				}
 			}
