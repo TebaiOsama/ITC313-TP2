@@ -21,11 +21,6 @@ class Client{
 		Client();
 		Client(int t_id_client, std::string t_nom_client, 
 		std::string t_prenom_client, std::vector<Produit> t_listeproduits={}); //constructeur
-		//setters
-		// void setIdClient(int t_id_client);
-		// void setNomClient(std::string t_nom_client);
-		// void setPrenomClient(std::string t_prenom_client);
-		// void setListeProduits(std::vector<Produit> t_listeproduits);
 		//getters
 		int getIdClient();
 		std::string getNomClient();
